@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import LogoPath from "@/assets/shop-logo.png";
 import styles from "./Login.module.scss";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/loader/Loader";
+import Input from "@/components/input/Input";
 
 const LoginClient = () => {
   const [email, setEmail] = useState("");
@@ -39,8 +40,28 @@ const LoginClient = () => {
           </h1>
 
           <form onSubmit={signIn} className={styles.form}>
-            <input type="email" />
-            <input type="password" />
+            <Input
+              email
+              icon="letter"
+              id="email"
+              name="email"
+              label="ID"
+              placeholder="E-mail"
+              className={styles.input}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              password
+              icon="lock"
+              id="password"
+              name="password"
+              label="Password"
+              placeholder="Password"
+              className={styles.input}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
             <div className={styles.group}>
               <input type="checkbox" name="autoLogin" />
