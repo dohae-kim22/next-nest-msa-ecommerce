@@ -8,6 +8,7 @@ import styles from "./Login.module.scss";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/loader/Loader";
 import Input from "@/components/input/Input";
+import AutoSignInCheckbox from "@/components/autoSignInCheckbox/AutoSignInCheckbox";
 
 const LoginClient = () => {
   const [email, setEmail] = useState("");
@@ -64,8 +65,10 @@ const LoginClient = () => {
             />
 
             <div className={styles.group}>
-              <input type="checkbox" name="autoLogin" />
-              <label htmlFor="autoLogin">Keep me signed in</label>
+              <AutoSignInCheckbox
+                checked={isAutoLogin}
+                onChange={(e) => setIsAutoLogin(e.target.checked)}
+              />
               <a href="">Forgot Password</a>
             </div>
 
