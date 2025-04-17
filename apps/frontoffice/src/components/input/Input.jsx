@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Input.module.scss";
+import Icon from "../icon/Icon";
+import classNames from "classnames";
 
 const Input = ({
   id,
@@ -36,11 +38,21 @@ const Input = ({
   const iconLabel = isPasswordVisible ? "Hide password" : "Show password";
 
   return (
-    <div>
-      <label htmlFor="id">{label}</label>
+    <div className={classNames(styles.inputContainer, className)}>
+      <label
+        htmlFor={id}
+        className={classNames(styles.label, labelVisible || styles.labelHidden)}
+      >
+        {label}
+      </label>
 
-      <div>
-        {/* {icon ? <Icon /> : null} */}
+      <div
+        className={classNames(
+          styles.inputWrapper,
+          errorProp && styles.inputWrapperError
+        )}
+      >
+        {icon ? <Icon type={icon} /> : null}
         <input
           id={id}
           type={checkType()}
@@ -50,16 +62,18 @@ const Input = ({
           disabled={disabled}
           value={inputValue}
           onChange={handleChange}
+          className={styles.input}
           {...restProps}
         />
 
         {password ? (
           <button
             type="button"
+            className={styles.button}
             onClick={() => setIsPasswordVisible((prev) => !prev)}
             disabled={disabled}
           >
-            {/* <Icon type={iconType} alt={iconLabel} title={iconLabel} /> */}
+            <Icon type={iconType} alt={iconLabel} title={iconLabel} />
           </button>
         ) : null}
       </div>

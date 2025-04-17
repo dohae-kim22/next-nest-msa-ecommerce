@@ -1,0 +1,38 @@
+.inputContainer {
+  display: inline-flex;
+  flex-direction: column;
+
+  .inputWrapper {
+    display: inline-flex;
+    min-width: 296px;
+    border: 0.5px solid var(--border-gray);
+  }
+
+  .input {
+    flex: 1;
+    border: none;
+    padding: 0.9rem;
+    background: var(--color-white);
+    border: 0.5px solid var(--border-gray);
+
+    &::placeholder {
+      color: var(--dark-gray);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--dark-gray);
+    }
+  }
+
+  .button {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+
+  img {
+    vertical-align: bottom;
+    border: 0.5px solid var(--border-gray);
+  }
+}
